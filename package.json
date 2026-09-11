@@ -23,7 +23,8 @@
     "lint": "tsc --noEmit --noUnusedLocals --pretty false && knip-bun --exclude dependencies --reporter json",
     "serve": "bun run build:production && bun run vite --port 443 --host 0.0.0.0 preview --outDir dist/production",
     "test-live": "bun run build:production && target=dist/production bun test test/live.test.ts",
-    "vite": "bun node_modules/vite/dist/node/cli.js --configLoader runner"
+    "vite": "bun node_modules/vite/dist/node/cli.js --configLoader runner",
+    "test": "bun test --max-concurrency 1 ./test"
   },
   "dependencies": {
     "clsx": "^2.1.1",
