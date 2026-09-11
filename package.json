@@ -5,7 +5,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git@github.com:jaidlab/casing.run.git"
+    "url": "git+https://github.com/Jaid/casing.run.git"
   },
   "exports": {
     ".": {
