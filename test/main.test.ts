@@ -1,17 +1,6 @@
 import {describe, expect, test} from 'bun:test'
 
-import {camelCase,
-  cobolCase,
-  constantCase,
-  kebabCase,
-  lowerCase,
-  pascalCase,
-  sentenceCase,
-  snakeCase,
-  splitWords,
-  titleCase,
-  trainCase,
-  upperCase} from '#src/lib/casings.ts'
+import {camelCase, cobolCase, constantCase, kebabCase, lowerCase, pascalCase, sentenceCase, snakeCase, splitWords, titleCase, trainCase, upperCase} from '#src/lib/casings.ts'
 
 describe('splitWords', () => {
   test('empty string returns single empty token', () => {
