@@ -16,7 +16,7 @@ export default () => {
   const items = Object.entries(casings).map(([key, casing]) => {
     const value = casing.convert(text)
     const isEqual = value === text.trim()
-    return <div className={clsx(css.item, css[casing.category], hasText && isEqual && css.equal)} key={key}>
+    return <div key={key} className={clsx(css.item, css[casing.category], hasText && isEqual && css.equal)}>
       <div className={css.header}>
         <span className={css.button}>󱉨</span>
         <span className={css.name}>{casing.id}</span>
@@ -26,7 +26,7 @@ export default () => {
   })
   return <>
     <div className={css.inputWrapper}>
-      <input autoFocus className={css.input} onChange={onChange} placeholder={placeholderText} type='text' value={text} />
+      <input className={css.input} autoFocus placeholder={placeholderText} type='text' value={text} onChange={onChange} />
     </div>
     <div className={css.arrow}>
       change casing
