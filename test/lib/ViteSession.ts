@@ -14,7 +14,7 @@ export default class ViteSession implements AsyncDisposable {
   })
 
   static formatAddress(address: AddressInfo) {
-    const host = ['::', '0.0.0.0'].includes(address.address) ? '127.0.0.1' : address.address
+    const host = ['0.0.0.0', '::'].includes(address.address) ? '127.0.0.1' : address.address
     return `http://${host}:${address.port}`
   }
 
