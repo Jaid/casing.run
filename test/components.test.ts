@@ -15,32 +15,22 @@ describe('App component', () => {
   test('renders input field', async () => {
     const html = await render('App')
     expect(html).toContain('<input')
-    expect(html).toContain('placeholder="Enter some text…"')
+    expect(html).toContain('placeholder="Enter some text"')
   })
   test('renders all casing labels', async () => {
     const html = await render('App')
-    expect(html).toContain('camelCase')
-    expect(html).toContain('PascalCase')
-    expect(html).toContain('snake_case')
-    expect(html).toContain('CONSTANT_CASE')
-    expect(html).toContain('kebab-case')
-    expect(html).toContain('Train-Case')
-    expect(html).toContain('COBOL-CASE')
-    expect(html).toContain('lower case')
-    expect(html).toContain('UPPER CASE')
-    expect(html).toContain('Title Case')
-    expect(html).toContain('Sentence case')
+    for (const label of ['camel', 'pascal', 'snake', 'constant', 'kebab', 'train', 'cobol', 'lower', 'sentence', 'title', 'upper']) {
+      expect(html).toContain(`<span class="name">${label}</span>`)
+    }
   })
   test('renders 11 casing items', async () => {
     const html = await render('App')
-    // Each item is an <li> element
-    const itemCount = (html.match(/<li/g) ?? []).length
+    const itemCount = (html.match(/<div class="item /g) ?? []).length
     expect(itemCount).toBe(11)
   })
   test('renders empty results when no text entered', async () => {
     const html = await render('App')
-    // All output elements should be empty (no text entered)
-    const outputs = html.match(/<output[^>]*><\/output>/g) ?? []
-    expect(outputs.length).toBe(11)
+    const results = html.match(/<input class="result"[^>]*value=""/g) ?? []
+    expect(results.length).toBe(11)
   })
 })
