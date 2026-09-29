@@ -83,7 +83,7 @@ describe.if(Boolean(Bun.env.target)).each(['chrome', 'firefox'])('%s', host => {
       const first = document.querySelector<HTMLInputElement>('input[readonly]')
       return first?.value === 'helloWorld'
     })
-    const values = await page.$$eval('input[readonly]', elements => elements.map(element => (element as HTMLInputElement).value))
+    const values = await page.$$eval('input[readonly]', elements => elements.map(element => element.value))
     expect(values).toEqual([
       'helloWorld',
       'HelloWorld',
@@ -109,7 +109,7 @@ describe.if(Boolean(Bun.env.target)).each(['chrome', 'firefox'])('%s', host => {
     await page.waitForFunction(() => document.querySelector<HTMLInputElement>('input[readonly]')?.value === 'foo')
     await page.type(inputSelector, ' bar')
     await page.waitForFunction(() => document.querySelector<HTMLInputElement>('input[readonly]')?.value === 'fooBar')
-    const values = await page.$$eval('input[readonly]', elements => elements.map(element => (element as HTMLInputElement).value))
+    const values = await page.$$eval('input[readonly]', elements => elements.map(element => element.value))
     expect(values).toContain('fooBar')
     expect(values).toContain('FooBar')
     expect(values).toContain('foo_bar')
